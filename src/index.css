@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply font-sans antialiased;
+    /* Bengali glyphs fall through to Noto Sans Bengali, then system fonts */
+    font-family: 'Inter', 'Noto Sans Bengali', 'Kalpurush', 'Nirmala UI', system-ui, sans-serif;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+/* ---- Leaflet ---- */
+.gis-map {
+  position: relative;
+  z-index: 0; /* keep map panes below modals and the mobile drawer */
+  background: #e5e7eb;
+}
+
+.leaflet-container {
+  font-family: inherit;
+}
+
+.gis-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.gis-marker svg {
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.gis-marker-draft svg {
+  animation: gis-drop 0.25s ease-out;
+}
+
+@keyframes gis-drop {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.gis-upazila-label {
+  background: transparent;
+  border: none;
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ---- Popups ---- */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+}
+
+.leaflet-popup-content {
+  margin: 10px 12px;
+}
+
+.gis-popup {
+  min-width: 180px;
+  max-width: 260px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #334155;
+}
+
+.gis-popup-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.gis-popup-bn {
+  font-family: 'Noto Sans Bengali', 'Kalpurush', 'Nirmala UI', sans-serif;
+  color: #475569;
+}
+
+.gis-popup-row {
+  margin-top: 2px;
+}
+
+.gis-popup-status {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #e2e8f0;
+  color: #64748b;
+}
